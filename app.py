@@ -8,8 +8,8 @@ def index():
     return "This is a recipe API, you can retrieve, and submit recipes"
 
 
-@app.route('/recipes')
-def recipes():
+@app.route('/get-recipes')
+def get_recipes():
     return {
         "Recipes": {
             "Beans On Toast": {
@@ -33,7 +33,17 @@ def recipes():
         }
     }
 
+# id is primary key
+@app.route('/get-recipe/<id>')
+def get_recipes():
+    pass
+
+
+@app.route('/submit-recipe', method="PUT")
+def submit_recipes():
+    pass
+
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
