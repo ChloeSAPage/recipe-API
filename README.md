@@ -10,7 +10,7 @@ This API is _not_ hosted and thus will need to be installed on your local machin
 
 > [!IMPORTANT]
 > You will need:
-> -   [ ] MySQL database
+> -   [ ] MySQL
 
 ### Installing
 
@@ -31,7 +31,8 @@ pip install -r requirements.txt
 
 #### 3. Create a config file in the root directory and add your SQL details.
 
-> [!WARNING] > **The file should be formatted as such, with the appropriate details. Otherwise it will _not_ work**
+> [!WARNING]
+> **The file should be formatted as such, with the appropriate details. Otherwise it will _not_ work**
 
 ```
 HOST = "localhost"
