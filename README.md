@@ -10,7 +10,8 @@ This API is _not_ hosted and thus will need to be installed on your local machin
 
 > [!IMPORTANT]
 > You will need:
-> -   [ ] MySQL database
+>
+> -   [ ] MySQL
 
 ### Installing
 
@@ -40,10 +41,12 @@ PASSWORD = ""
 ```
 
 #### 5. Manually create a DB
+
 > [!WARNING]
 > Use the supplied code in the `/DB_SETUP` directory to manually create a MySQL database. **A DB will _not_ be automatically created**
 
 #### 4. Run
+
 > [!CAUTION]
 > Running the files in a different order may cause issues.
 
