@@ -1,4 +1,5 @@
 from flask import Flask
+from db_utils import get_recipes
 
 app = Flask(__name__)
 
@@ -9,37 +10,18 @@ def index():
 
 
 @app.route('/get-recipes')
-def get_recipes():
-    return {
-        "Recipes": {
-            "Beans On Toast": {
-                "Ingredients": ["Baked Beans", "Bread", "Butter"],
-                "Instructions": {
-                    1: "Cook the beans following package instructions",
-                    2: "Toast the Bread",
-                    3: "Butter the bread",
-                    4: "Put Beans on Bread",
-                    5: "Enjoy!"
-                }
-            },
-            "Cereal": {
-                "Ingredients": ["Cereal", "Milk"],
-                "Instructions": {
-                    1: "Get a bowl",
-                    2: "Pour cereal into bowl",
-                    3: "Pour Milk into bowl"
-                }
-            }
-        }
-    }
+def call_get_recipes():
+    result = get_recipes()
+    return result
+
 
 # id is primary key
 @app.route('/get-recipe/<id>')
-def get_recipes():
+def get_recipe():
     pass
 
 
-@app.route('/submit-recipe', method="PUT")
+@app.route('/submit-recipe', methods=["PUT"])
 def submit_recipes():
     pass
 
