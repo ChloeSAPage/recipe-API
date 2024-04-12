@@ -17,6 +17,31 @@ def request_get_recipe(name):
     )
     return result.json()
 
+def input_recipe():
+    recipe = []
+
+    recipe_name = input("Enter your recipe name: ")
+    recipe.append(recipe_name)
+
+    instructions = input("Enter your recipe instructions (use a \"\\n\" after each instruction then hit enter): ")
+    recipe.append(instructions)
+
+    done = True
+    while done:
+        ingredients = []
+        ingredient = input("Enter your recipe ingredient (enter 'None' when no more ingredients): ")
+        if ingredient == "None":
+            break
+        measurement = input("Enter your ingredient measurement: ")
+        unit = input("Enter your ingredient unit: ")
+        ingredients.append(ingredient)
+        ingredients.append(measurement)
+        ingredients.append(unit)
+        recipe.append(ingredients)
+
+    print(recipe)
+    return recipe
+
 
 def format_response(result):
     print(result[0][0])
@@ -30,8 +55,9 @@ def format_response(result):
 def run():
     # result = request_get_recipes()
     # print(result)
-    result = request_get_recipe('Beans On Toast')
-    format_response(result)
+    # result = request_get_recipe('Beans On Toast')
+    # format_response(result)
+    input_recipe()
 
 
 
