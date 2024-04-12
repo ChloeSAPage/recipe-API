@@ -30,7 +30,37 @@ def get_recipes():
 
         cur.execute(query)
 
-        result = cur.fetchall()  # this is a list with db records where each record is a tuple
+        result = cur.fetchall()  # this is a list of all recipe names, where each recipe name is a list.
+        cur.close()
+
+    except Exception:
+        raise DbConnectionError("Failed to read data from DB")
+
+    finally:
+        if db_connection:
+            db_connection.close()
+            print("DB connection is closed")
+
+    return result
+
+def get_recipe(name):
+    try:
+        db_name = 'cookbook'
+        db_connection = _connect_to_db(db_name)
+        cur = db_connection.cursor()
+        print("Connected to DB: %s" % db_name)
+
+        query = """
+            SELECT r.title, r.instructions, i.ingredient, i.measurement, i.unit
+            FROM recipes r
+            INNER JOIN ingredients i
+            ON r.recipe_id = i.recipe_id
+            WHERE r.title = "{}";
+            """.format(name)
+
+        cur.execute(query)
+
+        result = cur.fetchall()  # this is a list of all recipe names, where each recipe name is a list.
         cur.close()
 
     except Exception:
