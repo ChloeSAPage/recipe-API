@@ -6,7 +6,7 @@ With this recipe API, you can retrieve (in JSON format), and submit recipes into
 
 ## **Getting started guide**
 
-This API is not hosted and thus will need to be installed on your local machine.
+This API is *not* hosted and thus will need to be installed on your local machine.
 
 > [!IMPORTANT]
 > You will need:
@@ -32,9 +32,8 @@ pip install -r requirements.txt
 
 #### 3. Create a config file in the root directory and add your SQL details.
 
-> [!IMPORTANT]
-
-The file should be formatted as such, with the appropriate details:
+> [!WARNING]
+> **The file should be formatted as such, with the appropriate details. Otherwise this will _not_ work **
 
 ```
 HOST = "localhost"
@@ -75,23 +74,64 @@ Use the supplied code in the `/DB_SETUP` directory to create a MySQL database.
 - Method: PUT
 - Response: 201
 
-# Git Section
+## Error Handling
+
+The API returns the appropriate HTTP status code.
+
+# Git Section [^1]
 
 ## Checking the status
 
-![alt text](image.png)
+![Checking the status](/images/image.png)
 
 ## Creating the branch
 
-![alt text](image-1.png)
+![Creating the branch](/images/image-1.png)
 
 ## Adding files to branch
 
-![alt text](image-2.png)
+![Adding files to branch](/images/image-2.png)
 
 
 ## Commits
 
+![Commits](/images/image-3.png)
+
+
 ## Pull request
 
+https://github.com/ChloeSAPage/Recipe-API/pull/1
+
+![Pull request](/images/image-4.png)
+
+
 ## Merging with main
+
+### Request
+
+![Request merge](/images/image-5.png)
+
+### Confirm Merge
+
+![Confirm Merge](/images/image-6.png)
+
+### Merge Success and branch deleted
+
+![Merge Success and branch deleted](/images/image-7.png)
+
+## Git ignore
+
+The .gitignore file is used to ensure files you don't wish to be shared (such as the config.py file) are not accidentally added in a commit. The files will be ignored when staging files even when using `git add .`
+
+## Requirements.txt
+
+This file is used to show what dependencies a repository has, for example this repo uses the following packages:
+
+- requests
+- mysql
+- flask
+
+
+The requirements file can be easily installed using the following command `pip install -r requirements.txt`
+
+[^1]: This section will be removed after the pull request is confirmed.
