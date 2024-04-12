@@ -6,12 +6,11 @@ With this recipe API, you can retrieve (in JSON format), and submit recipes into
 
 ## **Getting started guide**
 
-This API is *not* hosted and thus will need to be installed on your local machine.
+This API is _not_ hosted and thus will need to be installed on your local machine.
 
 > [!IMPORTANT]
 > You will need:
-
-- [ ]  MySQL database
+> -   [ ] MySQL database
 
 ### Installing
 
@@ -32,8 +31,7 @@ pip install -r requirements.txt
 
 #### 3. Create a config file in the root directory and add your SQL details.
 
-> [!WARNING]
-> **The file should be formatted as such, with the appropriate details. Otherwise this will _not_ work **
+> [!WARNING] > **The file should be formatted as such, with the appropriate details. Otherwise it will _not_ work**
 
 ```
 HOST = "localhost"
@@ -42,11 +40,12 @@ PASSWORD = ""
 ```
 
 #### 5. Manually create a DB
-
-Use the supplied code in the `/DB_SETUP` directory to create a MySQL database.
-
+> [!WARNING]
+> Use the supplied code in the `/DB_SETUP` directory to manually create a MySQL database. **A DB will _not_ be automatically created**
 
 #### 4. Run
+> [!CAUTION]
+> Running the files in a different order may cause issues.
 
 1. Run app.py
 2. Run main.py
@@ -56,23 +55,22 @@ Use the supplied code in the `/DB_SETUP` directory to create a MySQL database.
 
 ### Get all recipes
 
-- Endpoint: `/get-recipes`
-- Method: GET
-- Response: JSON
+-   Endpoint: `/get-recipes`
+-   Method: GET
+-   Response: JSON
 
 ### Get one recipe
 
-- Endpoint: `/get-recipe/<id>`
-- Method: GET
-- Parameters: `recipe-id` (required).
-- Response: JSON
-
+-   Endpoint: `/get-recipe/<id>`
+-   Method: GET
+-   Parameters: `recipe-id` (required).
+-   Response: JSON
 
 ### Submit a recipe
 
-- Endpoint: `/submit-recipe/`
-- Method: PUT
-- Response: 201
+-   Endpoint: `/submit-recipe/`
+-   Method: PUT
+-   Response: 201
 
 ## Error Handling
 
@@ -92,18 +90,15 @@ The API returns the appropriate HTTP status code.
 
 ![Adding files to branch](/images/image-2.png)
 
-
 ## Commits
 
 ![Commits](/images/image-3.png)
-
 
 ## Pull request
 
 https://github.com/ChloeSAPage/Recipe-API/pull/1
 
 ![Pull request](/images/image-4.png)
-
 
 ## Merging with main
 
@@ -127,10 +122,9 @@ The .gitignore file is used to ensure files you don't wish to be shared (such as
 
 This file is used to show what dependencies a repository has, for example this repo uses the following packages:
 
-- requests
-- mysql
-- flask
-
+-   requests
+-   mysql
+-   flask
 
 The requirements file can be easily installed using the following command `pip install -r requirements.txt`
 
