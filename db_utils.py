@@ -44,6 +44,7 @@ def get_recipes():
 
     return result
 
+
 def get_recipe(name):
     '''Get a single recipe name from the cookbook db based on the users input'''
     try:
@@ -129,8 +130,6 @@ def insert_recipe(recipe):
             print("DB connection is closed")
 
     return "201"
-
-
 
 
 if __name__ == '__main__':

@@ -37,11 +37,11 @@ def format_response(result):
     '''
     Take result from get_recipe() and print it nicely
     '''
-    print(result[0][0])
+    print(f"\n-------------------\n {result[0][0]} \n---------------------")
     print("Ingredients:")
     for ingredient in result:
         print(f"{ingredient[2]}, {str(ingredient[3])} {ingredient[4]}")
-    print(result[0][1])
+    print(f"\n{result[0][1]}\n")
 
 
 def input_recipe():
@@ -51,7 +51,7 @@ def input_recipe():
     recipe_name = input("Enter your recipe name: ")
     recipe.append(recipe_name)
 
-    instructions = input("Enter your recipe instructions (use a \"\\n\" after each instruction then hit enter): ")
+    instructions = input("Enter your recipe instructions (use a \"\\n\" after each instruction): ")
     recipe.append(instructions)
 
     done = True
@@ -67,25 +67,35 @@ def input_recipe():
         ingredients.append(unit)
         recipe.append(ingredients)
 
-    print(recipe)
     return recipe
 
 
 
 def run():
-    # Get all recipe names in cookbook
-        #result = request_get_recipes()
-        # print(result)
+    try:
+        user_choice = int(input("Please select an option. \n1 - List all recipe names\n2 - Get recipe by name\n3 - Input a recipe\nEnter a number: "))
+    except ValueError:
+        print("Please enter a number")
 
-    # Get whole recipe by recipe name given by user
-        # result = request_get_recipe('Beans On Toast')
-        # format_response(result)
+    if user_choice == 1:
+        # Get all recipe names in cookbook
+        result = request_get_recipes()
+        print(result)
 
+    elif user_choice == 2:
+        # Get whole recipe by recipe name given by user
+        # Example Beans On Toast
+        result = input("Enter the name of the recipe you wish to see: ")
+        recipe = request_get_recipe(result)
+        format_response(recipe)
 
-    # Input Recipe
+    elif user_choice == 3:
+        # Input Recipe
         recipe = input_recipe()
         print(request_put_recipe(recipe))
-        # get
+        # Print recipe that was just put in
+        recipe_return = request_get_recipe(recipe[0])
+        format_response(recipe_return)
 
 
 

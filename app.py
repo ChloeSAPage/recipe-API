@@ -15,7 +15,6 @@ def call_get_recipes():
     return result
 
 
-
 @app.route('/get-recipe/<name>')
 def call_get_recipe(name):
     result = get_recipe(name)
@@ -27,7 +26,6 @@ def call_insert_recipe():
     recipe = request.get_json()
     code = insert_recipe(recipe)
     return code
-
 
 
 if __name__ == '__main__':
