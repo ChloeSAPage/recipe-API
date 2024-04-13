@@ -86,7 +86,6 @@ def insert_recipe(recipe):
         print("Connected to DB: %s" % db_name)
 
         # insert recipe name into recipes table
-        # recipe = ['Microwave Bacon', '1. Microwave Bacon \\n 2. Eat', ['Bacon', '2', 'rashers'], ['Bread', '2', 'Slices']]
         title = recipe[0]
         instructions = recipe[1]
         query = """
@@ -100,7 +99,6 @@ def insert_recipe(recipe):
         except mysql.connector.IntegrityError:
             print(mysql.connector.IntegrityError)
             return "Recipe Title Already Exists"
-
 
         # get recipe ID from recipe table in order to place the ingredients in table
         recipe_id = cur.lastrowid
@@ -129,7 +127,7 @@ def insert_recipe(recipe):
             db_connection.close()
             print("DB connection is closed")
 
-    return "201"
+    return "201 - Created"
 
 
 if __name__ == '__main__':
