@@ -27,7 +27,10 @@ def request_put_recipe(recipe):
         headers={'content-type': 'application/json'},
         data=json.dumps(recipe)
     )
-    return result.json()
+    try:
+        return result.json()
+    except:
+        return result.content
 
 
 def format_response(result):

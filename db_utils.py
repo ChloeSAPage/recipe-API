@@ -94,8 +94,12 @@ def insert_recipe(recipe):
             VALUES
             ("{title}", "{instructions}")
             """.format(title=title, instructions=instructions)
+        try:
+            cur.execute(query)
+        except mysql.connector.IntegrityError:
+            print(mysql.connector.IntegrityError)
+            return "Recipe Title Already Exists"
 
-        cur.execute(query)
 
         # get recipe ID from recipe table in order to place the ingredients in table
         recipe_id = cur.lastrowid
@@ -107,7 +111,11 @@ def insert_recipe(recipe):
                     VALUES
                     ("{recipe_id}", "{ingredient}", "{measurement}", "{unit}")
                     """.format(recipe_id=recipe_id, ingredient=item[0], measurement=item[1], unit=item[2])
-            cur.execute(add_ingredients)
+            try:
+                cur.execute(add_ingredients)
+            except mysql.connector.Error:
+                print(mysql.connector.Error)
+                return "Measurement must be an Integer"
 
         db_connection.commit()
         cur.close()
@@ -120,7 +128,7 @@ def insert_recipe(recipe):
             db_connection.close()
             print("DB connection is closed")
 
-
+    return "201"
 
 
 

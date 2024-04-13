@@ -25,8 +25,8 @@ def call_get_recipe(name):
 @app.route('/submit-recipe', methods=["PUT"])
 def call_insert_recipe():
     recipe = request.get_json()
-    insert_recipe(recipe)
-    return "201"
+    code = insert_recipe(recipe)
+    return code
 
 
 
