@@ -84,18 +84,19 @@ def insert_recipe(recipe):
         cur = db_connection.cursor()
         print("Connected to DB: %s" % db_name)
 
-        # insert recipe into recipes table
-        # recipe = ['MIcrowave bacon', '1. microwve bacon \\n 2. vomit', ['bacon', '3', 'rashers'], ['bread', '2', 'slices']]
+        # insert recipe name into recipes table
+        # recipe = ['Microwave Bacon', '1. Microwave Bacon \\n 2. Eat', ['Bacon', '2', 'rashers'], ['Bread', '2', 'Slices']]
+        title = recipe[0]
+        instructions = recipe[1]
         query = """
             INSERT INTO recipes
             (title, instructions)
             VALUES
-            ("{}", "{}")
-            """.format(recipe)
+            ("{title}", "{instructions}")
+            """.format(title=title, instructions=instructions)
 
         cur.execute(query)
-
-        result = cur.fetchall()  # this is a list of all recipe names, where each recipe name is a list.
+        db_connection.commit()
 
         # get recipe ID from recipe table in order to place the ingredients in table
         # cur.execute(query)
@@ -114,8 +115,6 @@ def insert_recipe(recipe):
         if db_connection:
             db_connection.close()
             print("DB connection is closed")
-
-    return result
 
 
 

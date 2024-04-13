@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from db_utils import get_recipes, get_recipe, insert_recipe
 
 app = Flask(__name__)
@@ -24,8 +24,9 @@ def call_get_recipe(name):
 
 @app.route('/submit-recipe', methods=["PUT"])
 def call_insert_recipe():
-    insert_recipe()
-    pass
+    recipe = request.get_json()
+    insert_recipe(recipe)
+    return "201"
 
 
 

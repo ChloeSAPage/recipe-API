@@ -1,5 +1,5 @@
 import requests
-from db_utils import get_recipes, get_recipe
+import json
 
 
 def request_get_recipes():
@@ -22,11 +22,23 @@ def request_get_recipe(name):
 
 def request_put_recipe(recipe):
     ''''''
-    result = requests.get(
-        'http://127.0.0.1:5001/get-recipe/{}'.format(recipe),
-        headers={'content-type': 'application/json'}
+    result = requests.put(
+        'http://127.0.0.1:5001/submit-recipe',
+        headers={'content-type': 'application/json'},
+        data=json.dumps(recipe)
     )
     return result.json()
+
+
+def format_response(result):
+    '''
+    Take result from get_recipe() and print it nicely
+    '''
+    print(result[0][0])
+    print("Ingredients:")
+    for ingredient in result:
+        print(f"{ingredient[2]}, {str(ingredient[3])} {ingredient[4]}")
+    print(result[0][1])
 
 
 def input_recipe():
@@ -56,17 +68,6 @@ def input_recipe():
     return recipe
 
 
-def format_response(result):
-    '''
-    Take result from get_recipe() and print it nicely
-    '''
-    print(result[0][0])
-    print("Ingredients:")
-    for ingredient in result:
-        print(f"{ingredient[2]}, {str(ingredient[3])} {ingredient[4]}")
-    print(result[0][1])
-
-
 
 def run():
     # Get all recipe names in cookbook
@@ -79,9 +80,10 @@ def run():
 
 
     # Input Recipe
-        # recipe = input_recipe()
-        # request_put_recipe(recipe)
-    pass
+        recipe = input_recipe()
+        print(request_put_recipe(recipe))
+        # get
+
 
 
 
