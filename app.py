@@ -1,12 +1,12 @@
 from flask import Flask
-from db_utils import get_recipes, get_recipe
+from db_utils import get_recipes, get_recipe, insert_recipe
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    return "This is a recipe API, you can retrieve, and submit recipes"
+    return """This is a recipe API, you can retrieve, and submit recipes. See README for endpoints."""
 
 
 @app.route('/get-recipes')
@@ -15,7 +15,7 @@ def call_get_recipes():
     return result
 
 
-# id is primary key
+
 @app.route('/get-recipe/<name>')
 def call_get_recipe(name):
     result = get_recipe(name)
@@ -23,7 +23,8 @@ def call_get_recipe(name):
 
 
 @app.route('/submit-recipe', methods=["PUT"])
-def submit_recipes():
+def call_insert_recipe():
+    insert_recipe()
     pass
 
 

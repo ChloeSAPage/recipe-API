@@ -3,6 +3,7 @@ from db_utils import get_recipes, get_recipe
 
 
 def request_get_recipes():
+    '''Request the titles of all the recipes'''
     result = requests.get(
         'http://127.0.0.1:5001/get-recipes',
         headers={'content-type': 'application/json'}
@@ -11,13 +12,25 @@ def request_get_recipes():
 
 
 def request_get_recipe(name):
+    '''Request single recipe by recipe name'''
     result = requests.get(
         'http://127.0.0.1:5001/get-recipe/{}'.format(name),
         headers={'content-type': 'application/json'}
     )
     return result.json()
 
+
+def request_put_recipe(recipe):
+    ''''''
+    result = requests.get(
+        'http://127.0.0.1:5001/get-recipe/{}'.format(recipe),
+        headers={'content-type': 'application/json'}
+    )
+    return result.json()
+
+
 def input_recipe():
+    '''Allow user to input their own recipe from the command line'''
     recipe = []
 
     recipe_name = input("Enter your recipe name: ")
@@ -44,6 +57,9 @@ def input_recipe():
 
 
 def format_response(result):
+    '''
+    Take result from get_recipe() and print it nicely
+    '''
     print(result[0][0])
     print("Ingredients:")
     for ingredient in result:
@@ -53,13 +69,19 @@ def format_response(result):
 
 
 def run():
-    # result = request_get_recipes()
-    # print(result)
-    # result = request_get_recipe('Beans On Toast')
-    # format_response(result)
-    input_recipe()
+    # Get all recipe names in cookbook
+        #result = request_get_recipes()
+        # print(result)
+
+    # Get whole recipe by recipe name given by user
+        # result = request_get_recipe('Beans On Toast')
+        # format_response(result)
 
 
+    # Input Recipe
+        # recipe = input_recipe()
+        # request_put_recipe(recipe)
+    pass
 
 
 

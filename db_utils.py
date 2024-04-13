@@ -17,6 +17,7 @@ def _connect_to_db(db_name):
 
 
 def get_recipes():
+    ''' Get all the recipe names from the cookbook db'''
     try:
         db_name = 'cookbook'
         db_connection = _connect_to_db(db_name)
@@ -44,6 +45,7 @@ def get_recipes():
     return result
 
 def get_recipe(name):
+    '''Get a single recipe name from the cookbook db based on the users input'''
     try:
         db_name = 'cookbook'
         db_connection = _connect_to_db(db_name)
@@ -75,6 +77,7 @@ def get_recipe(name):
 
 
 def insert_recipe(recipe):
+    '''Insert the user given recipe into cookbook db'''
     try:
         db_name = 'cookbook'
         db_connection = _connect_to_db(db_name)
