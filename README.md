@@ -32,7 +32,8 @@ pip install -r requirements.txt
 
 #### 3. Create a config file in the root directory and add your SQL details.
 
-> [!WARNING] > **The file should be formatted as such, with the appropriate details. Otherwise it will _not_ work**
+> [!WARNING]
+> **The file should be formatted as such, with the appropriate details. Otherwise it will _not_ work**
 
 ```
 HOST = "localhost"
@@ -94,9 +95,9 @@ The API returns the appropriate HTTP status code.
 ![alt text](images/image11.png)
 
 # Git Section [^1]
+
 <details>
 <summary>Click here</summary>
-
 
 ## Checking the status
 
