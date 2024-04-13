@@ -63,7 +63,7 @@ def get_recipe(name):
 
         cur.execute(query)
 
-        result = cur.fetchall()  # this is a list of all recipe names, where each recipe name is a list.
+        result = cur.fetchall()
         cur.close()
 
     except Exception:

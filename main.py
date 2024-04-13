@@ -21,7 +21,6 @@ def request_get_recipe(name):
 
 
 def request_put_recipe(recipe):
-    ''''''
     result = requests.put(
         'http://127.0.0.1:5001/submit-recipe',
         headers={'content-type': 'application/json'},
@@ -70,7 +69,6 @@ def input_recipe():
     return recipe
 
 
-
 def run():
     try:
         user_choice = int(input("Please select an option. \n1 - List all recipe names\n2 - Get recipe by name\n3 - Input a recipe\nEnter a number: "))
@@ -96,14 +94,6 @@ def run():
         # Print recipe that was just put in
         recipe_return = request_get_recipe(recipe[0])
         format_response(recipe_return)
-
-
-
-
-
-
-
-
 
 
 if __name__ == '__main__':
