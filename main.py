@@ -21,6 +21,7 @@ def request_get_recipe(name):
 
 
 def request_put_recipe(recipe):
+    '''Submit recipe to API via PUT'''
     result = requests.put(
         'http://127.0.0.1:5001/submit-recipe',
         headers={'content-type': 'application/json'},
@@ -33,9 +34,7 @@ def request_put_recipe(recipe):
 
 
 def format_response(result):
-    '''
-    Take result from get_recipe() and print it nicely
-    '''
+    '''Take result from get_recipe() and print it nicely'''
     print(f"\n-------------------\n {result[0][0]} \n-------------------")
     print("Ingredients:")
     for ingredient in result:
@@ -70,6 +69,7 @@ def input_recipe():
 
 
 def run():
+    '''Take user input and call appropriate functions'''
     try:
         user_choice = int(input("Please select an option. \n1 - List all recipe names\n2 - Get recipe by name\n3 - Input a recipe\nEnter a number: "))
     except ValueError:
@@ -82,7 +82,7 @@ def run():
 
     elif user_choice == 2:
         # Get whole recipe by recipe name given by user
-        # Example Beans On Toast
+        # Example: Beans On Toast
         result = input("Enter the name of the recipe you wish to see: ")
         recipe = request_get_recipe(result)
         format_response(recipe)
@@ -91,8 +91,9 @@ def run():
         # Input Recipe
         recipe = input_recipe()
         print(request_put_recipe(recipe))
-        # Print recipe that was just put in
+        # retrieve and then print recipe that was just put input
         recipe_return = request_get_recipe(recipe[0])
+        print("Here is your recipe:")
         format_response(recipe_return)
 
 
