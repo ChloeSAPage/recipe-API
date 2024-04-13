@@ -1,5 +1,5 @@
 from flask import Flask
-from db_utils import get_recipes
+from db_utils import get_recipes, get_recipe
 
 app = Flask(__name__)
 
@@ -16,9 +16,10 @@ def call_get_recipes():
 
 
 # id is primary key
-@app.route('/get-recipe/<id>')
-def get_recipe():
-    pass
+@app.route('/get-recipe/<name>')
+def call_get_recipe(name):
+    result = get_recipe(name)
+    return result
 
 
 @app.route('/submit-recipe', methods=["PUT"])
