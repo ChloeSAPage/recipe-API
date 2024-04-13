@@ -96,16 +96,20 @@ def insert_recipe(recipe):
             """.format(title=title, instructions=instructions)
 
         cur.execute(query)
-        db_connection.commit()
 
         # get recipe ID from recipe table in order to place the ingredients in table
-        # cur.execute(query)
-        # result = cur.fetchall()
-
+        recipe_id = cur.lastrowid
         # for loop inserting ingredient into ingredient table
-        # cur.execute(query)
-        # result = cur.fetchall()
+        for item in recipe[2:]:
+            add_ingredients = """
+                    INSERT INTO ingredients
+                    (recipe_id, ingredient, measurement, unit)
+                    VALUES
+                    ("{recipe_id}", "{ingredient}", "{measurement}", "{unit}")
+                    """.format(recipe_id=recipe_id, ingredient=item[0], measurement=item[1], unit=item[2])
+            cur.execute(add_ingredients)
 
+        db_connection.commit()
         cur.close()
 
     except Exception:
