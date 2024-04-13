@@ -36,7 +36,7 @@ def format_response(result):
     '''
     Take result from get_recipe() and print it nicely
     '''
-    print(f"\n-------------------\n {result[0][0]} \n---------------------")
+    print(f"\n-------------------\n {result[0][0]} \n-------------------")
     print("Ingredients:")
     for ingredient in result:
         print(f"{ingredient[2]}, {str(ingredient[3])} {ingredient[4]}")
@@ -56,8 +56,8 @@ def input_recipe():
     done = True
     while done:
         ingredients = []
-        ingredient = input("Enter your recipe ingredient (enter 'None' when no more ingredients): ")
-        if ingredient == "None":
+        ingredient = input("Enter your recipe ingredient (enter 'None' when no more ingredients): ").lower()
+        if ingredient == "none":
             break
         measurement = input("Enter your ingredient measurement: ")
         unit = input("Enter your ingredient unit: ")
