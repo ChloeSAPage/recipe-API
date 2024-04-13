@@ -65,9 +65,9 @@ PASSWORD = ""
 
 ### Get one recipe
 
--   Endpoint: `/get-recipe/<id>`
+-   Endpoint: `/get-recipe/<name>`
 -   Method: GET
--   Parameters: `recipe-id` (required).
+-   Parameters: `recipe-name` (required).
 -   Response: JSON
 
 ### Submit a recipe
@@ -81,6 +81,9 @@ PASSWORD = ""
 The API returns the appropriate HTTP status code.
 
 # Example Usage
+
+> [!CAUTION]
+> Case sensitive
 
 ## Requesting all recipe names
 
