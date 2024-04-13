@@ -42,13 +42,3 @@ VALUES
 (2, "Cereal", 1, "Pour"),
 (2, "Milk", 1, "Splash"),
 (2, "Bowl", 1, "Bowl");
-
-INSERT INTO recipes
-(title, instructions)
-VALUES
-("Beans On Toast", "1: Cook the beans following package instructions,
-2: Toast the Bread,
-3: Butter the bread,
-4: Put Beans on Bread,
-5: Enjoy!"),
-("Cereal", "You know how to make cereal");
