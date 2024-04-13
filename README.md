@@ -2,7 +2,7 @@
 
 ## Overview
 
-With this recipe API, you can retrieve (in JSON format), and submit recipes into a database.
+This CLI app allows you to interact with and modify a MySQL cookbook database using an API.
 
 ## **Getting started guide**
 
@@ -21,7 +21,7 @@ Using Git, copy these files into a folder.
 Use this command:
 
 ```
-git clone https://github.com/ChloeSAPage/Rat-Bot.git
+git clone https://github.com/ChloeSAPage/Recipe-API.git
 ```
 
 #### 2. Install the requirements
@@ -32,8 +32,7 @@ pip install -r requirements.txt
 
 #### 3. Create a config file in the root directory and add your SQL details.
 
-> [!WARNING]
-> **The file should be formatted as such, with the appropriate details. Otherwise it will _not_ work**
+> [!WARNING] > **The file should be formatted as such, with the appropriate details. Otherwise it will _not_ work**
 
 ```
 HOST = "localhost"
@@ -41,12 +40,12 @@ USER = ""
 PASSWORD = ""
 ```
 
-#### 5. Manually create a DB
+#### 4. Manually create a DB
 
 > [!WARNING]
 > Use the supplied code in the `/DB_SETUP` directory to manually create a MySQL database. **A DB will _not_ be automatically created**
 
-#### 4. Run
+#### 5. Run
 
 > [!CAUTION]
 > Running the files in a different order may cause issues.
@@ -80,7 +79,24 @@ PASSWORD = ""
 
 The API returns the appropriate HTTP status code.
 
+# Example Usage
+
+## Requesting all recipe names
+
+![requesting all recipe names](/images/image9.png)
+
+## Get a specific recipe by name
+
+![alt text](images/image10.png)
+
+## Adding a recipe
+
+![alt text](images/image11.png)
+
 # Git Section [^1]
+<details>
+<summary>Click here</summary>
+
 
 ## Checking the status
 
@@ -131,5 +147,7 @@ This file is used to show what dependencies a repository has, for example this r
 -   flask
 
 The requirements file can be easily installed using the following command `pip install -r requirements.txt`
+
+</details>
 
 [^1]: This section will be removed after the pull request is confirmed.
