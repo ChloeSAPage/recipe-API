@@ -17,6 +17,7 @@ def _connect_to_db(db_name):
 
 
 def get_recipes():
+    ''' Get all the recipe names from the cookbook db'''
     try:
         db_name = 'cookbook'
         db_connection = _connect_to_db(db_name)
@@ -43,7 +44,9 @@ def get_recipes():
 
     return result
 
+
 def get_recipe(name):
+    '''Get a single recipe name from the cookbook db based on the users input'''
     try:
         db_name = 'cookbook'
         db_connection = _connect_to_db(db_name)
@@ -60,7 +63,7 @@ def get_recipe(name):
 
         cur.execute(query)
 
-        result = cur.fetchall()  # this is a list of all recipe names, where each recipe name is a list.
+        result = cur.fetchall()
         cur.close()
 
     except Exception:
@@ -75,33 +78,47 @@ def get_recipe(name):
 
 
 def insert_recipe(recipe):
+    '''Insert the user given recipe into cookbook db'''
     try:
         db_name = 'cookbook'
         db_connection = _connect_to_db(db_name)
         cur = db_connection.cursor()
         print("Connected to DB: %s" % db_name)
 
-        # insert recipe into recipes table
-        # recipe = ['MIcrowave bacon', '1. microwve bacon \\n 2. vomit', ['bacon', '3', 'rashers'], ['bread', '2', 'slices']]
+        # insert recipe name into recipes table
+        # recipe = ['Microwave Bacon', '1. Microwave Bacon \\n 2. Eat', ['Bacon', '2', 'rashers'], ['Bread', '2', 'Slices']]
+        title = recipe[0]
+        instructions = recipe[1]
         query = """
             INSERT INTO recipes
             (title, instructions)
             VALUES
-            ("{}", "{}")
-            """.format(recipe)
+            ("{title}", "{instructions}")
+            """.format(title=title, instructions=instructions)
+        try:
+            cur.execute(query)
+        except mysql.connector.IntegrityError:
+            print(mysql.connector.IntegrityError)
+            return "Recipe Title Already Exists"
 
-        cur.execute(query)
-
-        result = cur.fetchall()  # this is a list of all recipe names, where each recipe name is a list.
 
         # get recipe ID from recipe table in order to place the ingredients in table
-        # cur.execute(query)
-        # result = cur.fetchall()
-
+        recipe_id = cur.lastrowid
         # for loop inserting ingredient into ingredient table
-        # cur.execute(query)
-        # result = cur.fetchall()
+        for item in recipe[2:]:
+            add_ingredients = """
+                    INSERT INTO ingredients
+                    (recipe_id, ingredient, measurement, unit)
+                    VALUES
+                    ("{recipe_id}", "{ingredient}", "{measurement}", "{unit}")
+                    """.format(recipe_id=recipe_id, ingredient=item[0], measurement=item[1], unit=item[2])
+            try:
+                cur.execute(add_ingredients)
+            except mysql.connector.Error:
+                print(mysql.connector.Error)
+                return "Measurement must be an Integer"
 
+        db_connection.commit()
         cur.close()
 
     except Exception:
@@ -112,11 +129,7 @@ def insert_recipe(recipe):
             db_connection.close()
             print("DB connection is closed")
 
-    return result
-
-
-
-
+    return "201"
 
 
 if __name__ == '__main__':
