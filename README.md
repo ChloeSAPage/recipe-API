@@ -30,7 +30,7 @@ git clone https://github.com/ChloeSAPage/Recipe-API.git
 pip install -r requirements.txt
 ```
 
-#### 3. Create a config file in the root directory and add your SQL details.
+#### 3. Edit the config.py file in the root directory and add your SQL details.
 
 > [!WARNING]
 > **The file should be formatted as such, with the appropriate details. Otherwise it will _not_ work**
@@ -120,23 +120,21 @@ The API returns the appropriate HTTP status code.
 
 ## Pull request
 
-https://github.com/ChloeSAPage/Recipe-API/pull/1
-
-![Pull request](/images/image-4.png)
+![alt text](images/image12.png)
 
 ## Merging with main
 
 ### Request
 
-![Request merge](/images/image-5.png)
+![alt text](images/image13.png)
 
 ### Confirm Merge
 
-![Confirm Merge](/images/image-6.png)
+![alt text](images/image14.png)
 
 ### Merge Success and branch deleted
 
-![Merge Success and branch deleted](/images/image-7.png)
+![alt text](images/image15.png)
 
 ## Git ignore
 
@@ -147,7 +145,7 @@ The .gitignore file is used to ensure files you don't wish to be shared (such as
 This file is used to show what dependencies a repository has, for example this repo uses the following packages:
 
 -   requests
--   mysql
+-   mysql.connector
 -   flask
 
 The requirements file can be easily installed using the following command `pip install -r requirements.txt`
